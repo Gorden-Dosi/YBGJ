@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Kkancho from "../assets/images/Kkancho.png";
 
-export const Main = styled.div`
+const Main = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -11,7 +11,7 @@ export const Main = styled.div`
   margin: 0 auto;
   flex: 3 0 auto;
   position: relative;
-  z-index: 900;
+  z-index: 20;
   background-color: #bf8b67;
 `;
 

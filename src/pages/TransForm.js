@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import styled from "styled-components";
-import { Main } from "./Home";
+import { handleTransform } from "../utils/HandleTransform";
 
 const FormContainer = styled.div`
   display: flex;
@@ -11,21 +12,24 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 80;
   border-radius: 5px;
 `;
 
 const TransForm = () => {
-    const handleTransform = () => {
-        // 변환 작업을 처리하는 함수
-        // 업로드된 엑셀 파일을 읽고 변환 로직을 수행
-      };
+  const fileInput = useRef(null);
+
+  const onTransformClick = async () => {
+    const file = fileInput.current.files[0];
+    await handleTransform(file);
+  };
+
   return (
-    <Main>
-      <FormContainer>
-      <input type="file" accept=".xlsx" />
-        <button onClick={handleTransform}>변환</button>
-      </FormContainer>
-    </Main>
+    <FormContainer>
+      <input type="file" accept=".xlsx" ref={fileInput} />
+      <button onClick={onTransformClick}>변환</button>
+    </FormContainer>
   );
 };
 

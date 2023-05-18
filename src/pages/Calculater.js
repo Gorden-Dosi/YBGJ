@@ -1,8 +1,6 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Kkancho from '../assets/images/Kkancho.png';
 import { useState } from 'react';
-import { Main } from './Home';
+import Main from './Home';
 
 const TitleText = styled.div`
  font-size : 40px;
@@ -80,7 +78,7 @@ function Calculater() {
 
 
     return (
-        <main>
+        <Main>
             <Container>
                 <TitleText>마진율 계산기</TitleText>
                 <Table>
@@ -127,7 +125,7 @@ function Calculater() {
                     <Result>{netProfit.toFixed(2)} 원</Result>
                 </TableRow>
               </Container>
-            </main>
+            </Main>
           );
         }
 
