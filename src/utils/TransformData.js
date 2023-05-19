@@ -42,7 +42,7 @@ export const transformData = (data) => {
     // 변환 작업 수행
     for (let rowIndex = 1; rowIndex < data.length; rowIndex++) {
       const row = data[rowIndex];
-      const transformedRow = [];
+      const transformedRow = {};
   
       for (const targetColumn of targetColumns) {
         let value = '';
@@ -51,14 +51,14 @@ export const transformData = (data) => {
           if (columnMapping[columnName] === targetColumn) {
             const sourceColumn = columnName;
             const columnIndex = columnIndices[sourceColumn];
-    
+  
             if (columnIndex !== undefined && row[columnIndex] !== undefined) {
               value = row[columnIndex];
               break;
             }
           }
         }
-        transformedRow.push(value);
+        transformedRow[targetColumn] = value;
       }
   
       transformedData.push(transformedRow);
