@@ -36,7 +36,7 @@ const Input = styled.input`
   width: 100%;
   height: 200px; /* 크기 조정 */
   padding: 30px; /* 크기에 맞게 조정 */
-  margin: 20px;
+  margin: 20px 0;
   font-size: 1.1em; /* 글자 크기 조정 */
 `;
 
