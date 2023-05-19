@@ -1,4 +1,4 @@
-import XLSX from "xlsx";
+import * as XLSX from 'xlsx';
 
 // 엑셀 파일을 읽어 데이터를 가져오는 함수
 export const readFile = (file) => {

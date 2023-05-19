@@ -42,27 +42,27 @@ export const transformData = (data) => {
     // 변환 작업 수행
     for (let rowIndex = 1; rowIndex < data.length; rowIndex++) {
       const row = data[rowIndex];
-      const transformedRow = {};
+      const transformedRow = [];
   
-      for (const columnName in columnMapping) {
-        const sourceColumn = columnName;
-        const targetColumn = columnMapping[columnName];
-        const columnIndex = columnIndices[sourceColumn];
+      for (const targetColumn of targetColumns) {
+        let value = '';
   
-        if (columnIndex !== undefined && row[columnIndex] !== undefined) {
-          transformedRow[targetColumn] = row[columnIndex];
+        for (const columnName in columnMapping) {
+          if (columnMapping[columnName] === targetColumn) {
+            const sourceColumn = columnName;
+            const columnIndex = columnIndices[sourceColumn];
+    
+            if (columnIndex !== undefined && row[columnIndex] !== undefined) {
+              value = row[columnIndex];
+              break;
+            }
+          }
         }
-      }
-  
-      // 존재하지 않는 항목은 빈 값으로 설정
-      for (const columnName of targetColumns) {
-        if (!transformedRow.hasOwnProperty(columnName)) {
-          transformedRow[columnName] = '';
-        }
+        transformedRow.push(value);
       }
   
       transformedData.push(transformedRow);
     }
   
-    return transformedData;
+    return {columns: targetColumns, data: transformedData};
   };
