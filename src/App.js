@@ -6,10 +6,9 @@ import TransForm from './pages/TransForm';
 // import Calculater from './pages/Calculater';
 
 function App() {
-  const isDevelopment = process.env.NODE_ENV === 'development';
   
   return (
-    <Router basename={isDevelopment ? "/" : process.env.PUBLIC_URL}>
+    <Router basename="/">
       <Routes>
         <Route path="/" element={<Home/>} />
         {/* <Route path="/calculater" element={<Calculater/>} /> */}
